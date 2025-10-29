@@ -1,0 +1,219 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Poppins", sans-serif;
+  }
+  
+  body {
+    background: radial-gradient(circle at top left, #f1fff4, #eafbee, #f8fffb);
+    color: #222;
+    scroll-behavior: smooth;
+  }
+  
+  /* Navbar */
+  .navbar {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background: rgba(255, 255, 255, 0.7);
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid rgba(255,255,255,0.4);
+    padding: 20px 50px;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    transition: all 0.3s ease;
+  }
+  
+  .logo-center {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 10px;
+  }
+  
+  .logo-img {
+    width: 55px;
+    border-radius: 12px;
+    box-shadow: 0 3px 10px rgba(0,0,0,0.2);
+    transition: 0.3s;
+  }
+  
+  .logo-img:hover {
+    transform: rotate(-5deg) scale(1.05);
+  }
+  
+  .logo-text {
+    font-size: 1.8rem;
+    font-weight: 700;
+    color: #2e8b57;
+    text-shadow: 0 2px 8px rgba(46,139,87,0.3);
+  }
+  
+  nav a {
+    color: #1b1b1b;
+    text-decoration: none;
+    margin: 0 20px;
+    font-weight: 500;
+    position: relative;
+    transition: color 0.3s;
+  }
+  
+  nav a::after {
+    content: "";
+    position: absolute;
+    bottom: -5px;
+    left: 0;
+    width: 0%;
+    height: 2px;
+    background: #2e8b57;
+    transition: width 0.3s ease;
+  }
+  
+  nav a:hover::after,
+  nav a.active::after {
+    width: 100%;
+  }
+  
+  nav a:hover {
+    color: #2e8b57;
+  }
+  
+  /* Hero */
+  .hero {
+    background: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.6)),
+      url('images/store.jpg') center/cover no-repeat;
+    color: white;
+    text-align: center;
+    padding: 160px 20px;
+    position: relative;
+    border-radius: 0 0 80px 80px;
+    box-shadow: 0 8px 25px rgba(0,0,0,0.2);
+  }
+  
+  .hero-content h1 {
+    font-size: 3.2rem;
+    margin-bottom: 10px;
+    letter-spacing: 1px;
+  }
+  
+  .hero-content p {
+    font-size: 1.2rem;
+    opacity: 0.9;
+  }
+  
+  .btn-hero {
+    margin-top: 25px;
+    padding: 14px 40px;
+    background: linear-gradient(135deg, #2e8b57, #44c28b);
+    color: white;
+    border: none;
+    border-radius: 12px;
+    cursor: pointer;
+    font-size: 1rem;
+    font-weight: bold;
+    box-shadow: 0 6px 15px rgba(46,139,87,0.4);
+    transition: 0.3s;
+  }
+  
+  .btn-hero:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 10px 25px rgba(46,139,87,0.5);
+  }
+  
+  /* Featured */
+  .featured {
+    padding: 90px 20px;
+    text-align: center;
+  }
+  
+  .featured h2 {
+    color: #2e8b57;
+    font-size: 2.3rem;
+    margin-bottom: 50px;
+  }
+  
+  .product-grid {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 35px;
+  }
+  
+  .product-card {
+    background: rgba(255,255,255,0.8);
+    backdrop-filter: blur(10px);
+    border-radius: 25px;
+    padding: 25px;
+    width: 270px;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+    transition: all 0.4s ease;
+    text-align: center;
+  }
+  
+  .product-card:hover {
+    transform: translateY(-10px) scale(1.03);
+    box-shadow: 0 15px 40px rgba(46,139,87,0.3);
+  }
+  
+  .product-card img {
+    width: 100%;
+    border-radius: 18px;
+    margin-bottom: 15px;
+  }
+  
+  .btn-small {
+    background: linear-gradient(135deg, #2e8b57, #44c28b);
+    color: white;
+    border: none;
+    border-radius: 10px;
+    padding: 10px 20px;
+    margin-top: 10px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+  }
+  
+  .btn-small:hover {
+    transform: scale(1.05);
+    background: #ffb100;
+  }
+  
+  /* Features */
+  .features {
+    background: linear-gradient(180deg, #ffffff, #f2fff5);
+    padding: 100px 20px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 35px;
+  }
+  
+  .feature {
+    background: rgba(255,255,255,0.8);
+    backdrop-filter: blur(10px);
+    border-radius: 20px;
+    padding: 35px 25px;
+    width: 320px;
+    text-align: center;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+    transition: all 0.3s;
+  }
+  
+  .feature:hover {
+    transform: translateY(-12px);
+    box-shadow: 0 15px 35px rgba(46,139,87,0.3);
+  }
+  
+  /* Footer */
+  footer {
+    background: #2e8b57;
+    color: white;
+    text-align: center;
+    padding: 25px;
+    font-size: 0.9rem;
+    letter-spacing: 0.5px;
+    border-top-left-radius: 30px;
+    border-top-right-radius: 30px;
+  }
+  

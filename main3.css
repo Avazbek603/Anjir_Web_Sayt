@@ -1,0 +1,192 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap');
+
+* {
+  margin: 0; padding: 0; box-sizing: border-box;
+  font-family: "Poppins", sans-serif;
+}
+
+body {
+  background: linear-gradient(180deg, #f3fff5, #f8fdfb);
+  color: #222;
+  overflow-x: hidden;
+}
+
+/* Navbar */
+.navbar {
+  display: flex; justify-content: space-between; align-items: center;
+  padding: 16px 50px;
+  position: sticky; top: 0; z-index: 10;
+  background: rgba(255, 255, 255, 0.75);
+  backdrop-filter: blur(12px);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+}
+
+.logo-area {
+  display: flex; align-items: center; gap: 10px;
+}
+.logo-img {
+  height: 50px; border-radius: 12px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+}
+.logo-text {
+  font-weight: 700; font-size: 1.3rem; color: #1a823b;
+}
+
+.nav-links a {
+  text-decoration: none; color: #333;
+  margin-left: 25px; font-weight: 600;
+  position: relative; transition: 0.3s;
+}
+.nav-links a:hover,
+.nav-links a.active {
+  color: #1a823b;
+}
+.nav-links a::after {
+  content: "";
+  position: absolute;
+  bottom: -6px; left: 0;
+  width: 0%; height: 3px;
+  background: #1a823b;
+  transition: width 0.3s;
+}
+.nav-links a:hover::after,
+.nav-links a.active::after {
+  width: 100%;
+}
+
+/* Hero Section */
+.hero {
+  height: 450px;
+  background: url("https://source.unsplash.com/1600x900/?supermarket,groceries") center/cover no-repeat;
+  position: relative;
+}
+.hero-overlay {
+  background: rgba(0,0,0,0.5);
+  color: white;
+  height: 100%; width: 100%;
+  display: flex; flex-direction: column;
+  justify-content: center; align-items: center;
+  text-align: center;
+  animation: fadeIn 1.8s ease;
+}
+.hero-overlay h1 {
+  font-size: 2.8rem;
+  margin-bottom: 12px;
+  letter-spacing: 1px;
+}
+.hero-overlay p {
+  font-size: 1.2rem;
+  opacity: 0.9;
+}
+
+@keyframes fadeIn {
+  from {opacity: 0; transform: translateY(-20px);}
+  to {opacity: 1; transform: translateY(0);}
+}
+
+/* About section */
+.about {
+  text-align: center;
+  padding: 80px 10%;
+}
+.section-title {
+  font-size: 2rem;
+  color: #1a823b;
+  margin-bottom: 15px;
+}
+.section-text {
+  max-width: 900px;
+  margin: 0 auto 50px;
+  color: #555;
+  font-size: 1.1rem;
+  line-height: 1.7;
+}
+
+/* Value cards */
+.values-grid {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 30px;
+}
+.value-card {
+  background: rgba(255,255,255,0.65);
+  backdrop-filter: blur(8px);
+  width: 280px;
+  padding: 25px;
+  border-radius: 20px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+  transition: all 0.4s ease;
+  animation: floatUp 1.2s ease;
+}
+.value-card:hover {
+  transform: translateY(-10px) scale(1.03);
+  box-shadow: 0 14px 40px rgba(26,130,59,0.2);
+}
+.value-card .icon {
+  font-size: 2rem;
+  margin-bottom: 12px;
+}
+.value-card h3 {
+  color: #1a823b;
+  margin-bottom: 8px;
+}
+
+/* Story section */
+.story {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  padding: 80px 10%;
+  gap: 40px;
+  background: linear-gradient(120deg, #eaffef, #f4fff9);
+}
+.story-img {
+  flex: 1 1 400px;
+  background: url("https://source.unsplash.com/800x600/?grocery,store") center/cover no-repeat;
+  height: 350px;
+  border-radius: 25px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+  animation: zoomIn 1.6s ease;
+}
+.story-text {
+  flex: 1 1 400px;
+}
+.story-text h2 {
+  color: #1a823b;
+  margin-bottom: 15px;
+  font-size: 1.9rem;
+}
+.story-text p {
+  color: #444;
+  margin-bottom: 20px;
+  font-size: 1.05rem;
+  line-height: 1.7;
+}
+
+@keyframes zoomIn {
+  from {transform: scale(0.9); opacity: 0;}
+  to {transform: scale(1); opacity: 1;}
+}
+@keyframes floatUp {
+  from {opacity: 0; transform: translateY(20px);}
+  to {opacity: 1; transform: translateY(0);}
+}
+
+/* Footer */
+footer {
+  background: #1a823b;
+  color: white;
+  text-align: center;
+  padding: 20px;
+  font-size: 0.95rem;
+  margin-top: 50px;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .navbar {padding: 14px 24px;}
+  .nav-links a {margin-left: 15px;}
+  .hero-overlay h1 {font-size: 2.1rem;}
+  .story {flex-direction: column;}
+}
