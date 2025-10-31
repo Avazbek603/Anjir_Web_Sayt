@@ -1,4 +1,12 @@
-// === Mahsulotlar ro'yxati ===
+// Mobil menyu
+const menuToggle = document.getElementById("menuToggle");
+const navLinks = document.getElementById("navLinks");
+
+menuToggle.addEventListener("click", () => {
+  navLinks.classList.toggle("active");
+});
+
+// Mahsulotlar
 const products = [
   {
     name: "Coca-Cola 1L",
@@ -693,38 +701,26 @@ const products = [
     image: "https://images.uzum.uz/cn4h49ps99ouqbfu3qsg/original.jpg",
     category: "Texnika"
   }
-
-
+ 
 ];
 
-// === Mahsulotlarni sahifaga chiqarish funksiyasi ===
-function displayProducts(list) {
-  const container = document.getElementById("productContainer");
-  container.innerHTML = "";
+const container = document.getElementById("productContainer");
 
-  list.forEach((p) => {
-    const card = document.createElement("div");
-    card.classList.add("product-card");
-    card.innerHTML = `
-      <img src="${p.image}" alt="${p.name}" />
-      <div class="product-info">
-        <div class="product-name">${p.name}</div>
-        <div class="product-price">${p.price}</div>
-      </div>
-    `;
-    container.appendChild(card);
-  });
-}
+products.forEach((p) => {
+  const card = document.createElement("div");
+  card.classList.add("product-card");
 
-// === Sahifa yuklanganda barcha mahsulotlarni ko‘rsat ===
-displayProducts(products);
+  card.innerHTML = `
+    <img src="${p.image}" alt="${p.name}" />
+    <div class="product-info">
+      <div class="product-name">${p.name}</div>
+      <div class="product-price">${p.price}</div>
+    </div>
+  `;
 
-// === Qidiruv funksiyasi ===
-const searchInput = document.getElementById("searchInput");
-searchInput.addEventListener("input", (e) => {
-  const value = e.target.value.toLowerCase();
-  const filtered = products.filter((p) =>
-    p.name.toLowerCase().includes(value)
-  );
-  displayProducts(filtered);
+  container.appendChild(card);
 });
+
+
+
+

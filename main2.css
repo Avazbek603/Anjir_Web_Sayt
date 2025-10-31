@@ -1,38 +1,8 @@
-/* Umumiy sozlamalar */
 * {
   box-sizing: border-box;
   margin: 0;
   padding: 0;
   font-family: "Poppins", sans-serif;
-}
-/* Navbar dizayni */
-.navbar {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-bottom: 15px;
-}
-
-.nav-links {
-  list-style: none;
-  display: flex;
-  gap: 25px;
-}
-
-.nav-links li {
-  display: inline-block;
-}
-
-.nav-links a {
-  color: white;
-  text-decoration: none;
-  font-weight: 500;
-  transition: color 0.3s ease;
-}
-
-.nav-links a:hover,
-.nav-links .active {
-  text-decoration: underline;
 }
 
 body {
@@ -40,21 +10,54 @@ body {
   color: #333;
 }
 
-/* Header */
-header {
+/* ===== Navbar ===== */
+.navbar {
   background-color: #2e7d32;
-  color: white;
-  padding: 20px;
-  text-align: center;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px 25px;
   position: sticky;
   top: 0;
-  z-index: 10;
+  z-index: 1000;
 }
 
-header h1 {
-  margin-bottom: 10px;
-  font-size: 28px;
-  letter-spacing: 1px;
+.logo {
+  color: white;
+  font-size: 22px;
+  font-weight: 600;
+}
+
+.nav-links {
+  display: flex;
+  list-style: none;
+  gap: 20px;
+}
+
+.nav-links a {
+  color: white;
+  text-decoration: none;
+  font-weight: 500;
+  transition: color 0.2s ease;
+}
+
+.nav-links a:hover {
+  color: #c8e6c9;
+}
+
+/* Mobil menyu */
+.menu-toggle {
+  display: none;
+  color: white;
+  font-size: 26px;
+  cursor: pointer;
+}
+
+/* Qidiruv */
+.search-bar {
+  text-align: center;
+  background-color: #388e3c;
+  padding: 15px 0;
 }
 
 #searchInput {
@@ -62,12 +65,12 @@ header h1 {
   max-width: 500px;
   padding: 10px 15px;
   border: none;
-  border-radius: 30px;
+  border-radius: 25px;
   outline: none;
   font-size: 16px;
 }
 
-/* Asosiy qism */
+/* Mahsulotlar qismi */
 main {
   padding: 30px;
   display: flex;
@@ -82,15 +85,13 @@ main {
   max-width: 1200px;
 }
 
-/* Mahsulot kartochkalari */
 .product-card {
   background-color: #fff;
   border-radius: 16px;
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
   overflow: hidden;
-  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  transition: 0.2s ease;
   text-align: center;
-  padding-bottom: 15px;
 }
 
 .product-card:hover {
@@ -111,7 +112,6 @@ main {
 .product-name {
   font-size: 16px;
   font-weight: 600;
-  color: #333;
   margin-bottom: 8px;
 }
 
@@ -129,4 +129,39 @@ footer {
   padding: 15px 0;
   margin-top: 40px;
   font-size: 14px;
+}
+
+/* ===== Responsivlik ===== */
+@media (max-width: 768px) {
+  .nav-links {
+    position: absolute;
+    top: 65px;
+    right: 0;
+    background-color: #2e7d32;
+    flex-direction: column;
+    width: 100%;
+    text-align: center;
+    display: none;
+  }
+
+  .nav-links li {
+    padding: 15px 0;
+    border-top: 1px solid rgba(255, 255, 255, 0.2);
+  }
+
+  .menu-toggle {
+    display: block;
+  }
+
+  .nav-links.active {
+    display: flex;
+  }
+
+  #searchInput {
+    width: 90%;
+  }
+
+  .product-container {
+    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+  }
 }

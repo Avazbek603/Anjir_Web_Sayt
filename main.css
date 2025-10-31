@@ -216,4 +216,158 @@
     border-top-left-radius: 30px;
     border-top-right-radius: 30px;
   }
+
+
+  /* ====== MOSLASHUVCHANLIK (RESPONSIVE DESIGN) ====== */
+
+/* Planshet (1024px dan kichik ekranlar uchun) */
+@media (max-width: 1024px) {
+  .navbar {
+    flex-direction: column;
+    padding: 15px 25px;
+  }
+
+  nav a {
+    margin: 8px 10px;
+    font-size: 0.95rem;
+  }
+
+  .hero {
+    padding: 120px 15px;
+  }
+
+  .hero-content h1 {
+    font-size: 2.5rem;
+  }
+
+  .product-grid {
+    gap: 25px;
+  }
+
+  .product-card {
+    width: 240px;
+  }
+
+  .feature {
+    width: 280px;
+    padding: 25px 20px;
+  }
+}
+
+/* Telefon (768px dan kichik ekranlar uchun) */
+@media (max-width: 768px) {
+  .navbar {
+    padding: 12px 20px;
+  }
+
+  .logo-center {
+    flex-direction: column;
+    gap: 6px;
+  }
+
+  .logo-img {
+    width: 45px;
+  }
+
+  .logo-text {
+    font-size: 1.4rem;
+  }
+
+  nav {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  nav a {
+    margin: 6px 10px;
+    font-size: 0.9rem;
+  }
+
+  .hero {
+    padding: 100px 15px;
+    border-radius: 0 0 50px 50px;
+  }
+
+  .hero-content h1 {
+    font-size: 2rem;
+  }
+
+  .hero-content p {
+    font-size: 1rem;
+  }
+
+  .btn-hero {
+    padding: 12px 28px;
+    font-size: 0.9rem;
+  }
+
+  .product-grid {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .product-card {
+    width: 90%;
+    max-width: 300px;
+  }
+
+  .features {
+    flex-direction: column;
+    align-items: center;
+    padding: 70px 15px;
+  }
+
+  .feature {
+    width: 90%;
+    max-width: 320px;
+  }
+
+  footer {
+    font-size: 0.8rem;
+    padding: 18px;
+  }
+}
+
+/* Kichik telefon (480px dan kichik ekranlar uchun) */
+@media (max-width: 480px) {
+  .hero {
+    padding: 80px 10px;
+  }
+
+  .hero-content h1 {
+    font-size: 1.6rem;
+  }
+
+  .hero-content p {
+    font-size: 0.9rem;
+  }
+
+  .btn-hero {
+    padding: 10px 25px;
+    font-size: 0.85rem;
+  }
+
+  .logo-text {
+    font-size: 1.2rem;
+  }
+
+  nav a {
+    margin: 4px 8px;
+    font-size: 0.85rem;
+  }
+
+  .product-card {
+    width: 95%;
+  }
+
+  .feature {
+    width: 95%;
+  }
+
+  footer {
+    font-size: 0.75rem;
+  }
+}
+
   
