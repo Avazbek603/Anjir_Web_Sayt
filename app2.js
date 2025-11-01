@@ -704,23 +704,36 @@ const products = [
  
 ];
 
-const container = document.getElementById("productContainer");
+// === Mahsulotlarni sahifaga chiqarish funksiyasi ===
+function displayProducts(list) {
+  const container = document.getElementById("productContainer");
+  container.innerHTML = "";
 
-products.forEach((p) => {
-  const card = document.createElement("div");
-  card.classList.add("product-card");
+  list.forEach((p) => {
+    const card = document.createElement("div");
+    card.classList.add("product-card");
+    card.innerHTML = `
+      <img src="${p.image}" alt="${p.name}" />
+      <div class="product-info">
+        <div class="product-name">${p.name}</div>
+        <div class="product-price">${p.price}</div>
+      </div>
+    `;
+    container.appendChild(card);
+  });
+}
 
-  card.innerHTML = `
-    <img src="${p.image}" alt="${p.name}" />
-    <div class="product-info">
-      <div class="product-name">${p.name}</div>
-      <div class="product-price">${p.price}</div>
-    </div>
-  `;
+// === Sahifa yuklanganda barcha mahsulotlarni ko‘rsat ===
+displayProducts(products);
 
-  container.appendChild(card);
+// === Qidiruv funksiyasi ===
+const searchInput = document.getElementById("searchInput");
+searchInput.addEventListener("input", (e) => {
+  const value = e.target.value.toLowerCase();
+  const filtered = products.filter((p) =>
+    p.name.toLowerCase().includes(value)
+  );
+  displayProducts(filtered);
 });
-
-
 
 
