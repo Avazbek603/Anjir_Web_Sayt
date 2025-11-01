@@ -1,12 +1,3 @@
-// Mobil menyu
-const menuToggle = document.getElementById("menuToggle");
-const navLinks = document.getElementById("navLinks");
-
-menuToggle.addEventListener("click", () => {
-  navLinks.classList.toggle("active");
-});
-
-// Mahsulotlar
 const products = [
   {
     name: "Coca-Cola 1L",
@@ -701,39 +692,58 @@ const products = [
     image: "https://images.uzum.uz/cn4h49ps99ouqbfu3qsg/original.jpg",
     category: "Texnika"
   }
- 
 ];
 
-// === Mahsulotlarni sahifaga chiqarish funksiyasi ===
-function displayProducts(list) {
-  const container = document.getElementById("productContainer");
-  container.innerHTML = "";
+const container = document.getElementById("productContainer");
+const searchInput = document.getElementById("searchInput");
+let cart = [];
 
-  list.forEach((p) => {
+// Mahsulotlarni chiqarish funksiyasi
+function displayProducts(filteredProducts = products) {
+  container.innerHTML = "";
+  filteredProducts.forEach((p, index) => {
     const card = document.createElement("div");
     card.classList.add("product-card");
+
     card.innerHTML = `
       <img src="${p.image}" alt="${p.name}" />
       <div class="product-info">
         <div class="product-name">${p.name}</div>
         <div class="product-price">${p.price}</div>
+        <button class="add-to-cart" data-index="${index}">🛒 Savatga</button>
       </div>
     `;
+
     container.appendChild(card);
+  });
+
+  // Tugmalarga hodisa biriktirish
+  document.querySelectorAll(".add-to-cart").forEach((btn) => {
+    btn.addEventListener("click", (e) => {
+      const idx = e.target.getAttribute("data-index");
+      const product = products[idx];
+      cart.push(product);
+      alert(`${product.name} savatga qo‘shildi!`);
+      console.log("Savat:", cart);
+    });
   });
 }
 
-// === Sahifa yuklanganda barcha mahsulotlarni ko‘rsat ===
-displayProducts(products);
-
-// === Qidiruv funksiyasi ===
-const searchInput = document.getElementById("searchInput");
-searchInput.addEventListener("input", (e) => {
-  const value = e.target.value.toLowerCase();
+// Qidiruv funksiyasi
+searchInput.addEventListener("input", () => {
+  const query = searchInput.value.toLowerCase();
   const filtered = products.filter((p) =>
-    p.name.toLowerCase().includes(value)
+    p.name.toLowerCase().includes(query)
   );
   displayProducts(filtered);
 });
 
+displayProducts();
 
+// 🔹 Mobil menyu
+const menuToggle = document.getElementById("menuToggle");
+const navLinks = document.getElementById("navLinks");
+
+menuToggle.addEventListener("click", () => {
+  navLinks.classList.toggle("active");
+});
