@@ -696,7 +696,7 @@ const products = [
 
 const container = document.getElementById("productContainer");
 const searchInput = document.getElementById("searchInput");
-let cart = [];
+let cart = JSON.parse(localStorage.getItem("cart")) || [];
 
 // Mahsulotlarni chiqarish funksiyasi
 function displayProducts(filteredProducts = products) {
@@ -722,9 +722,13 @@ function displayProducts(filteredProducts = products) {
     btn.addEventListener("click", (e) => {
       const idx = e.target.getAttribute("data-index");
       const product = products[idx];
+
+      // Mahsulotni savatga qo‘shish
       cart.push(product);
+      localStorage.setItem("cart", JSON.stringify(cart));
+
+      // Foydalanuvchiga bildirish
       alert(`${product.name} savatga qo‘shildi!`);
-      console.log("Savat:", cart);
     });
   });
 }
@@ -738,12 +742,15 @@ searchInput.addEventListener("input", () => {
   displayProducts(filtered);
 });
 
+// Dastlabki mahsulotlarni chiqarish
 displayProducts();
 
-// 🔹 Mobil menyu
+// 🔹 Mobil menyu (agar bo‘lsa)
 const menuToggle = document.getElementById("menuToggle");
 const navLinks = document.getElementById("navLinks");
 
-menuToggle.addEventListener("click", () => {
-  navLinks.classList.toggle("active");
-});
+if (menuToggle && navLinks) {
+  menuToggle.addEventListener("click", () => {
+    navLinks.classList.toggle("active");
+  });
+}

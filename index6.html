@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Anjir Supermarket | Savat</title>
+  <link rel="stylesheet" href="main6.css">
+  <script src="app6.js" defer></script>
+</head>
+<body>
+
+  <header class="navbar">
+    <div class="logo">
+      <img src="img/ChatGPT Image 24 окт. 2025 г., 14_03_02.png" alt="Anjir Logo">
+      <h1>Anjir Supermarket</h1>
+    </div>
+    <nav>
+      <a href="index.html">Bosh sahifa</a>
+      <a href="index2.html">Mahsulotlar</a>
+      <a href="index6.html" class="active">Savat</a>
+    </nav>
+  </header>
+
+  <main>
+    <section class="cart-section">
+      <h2>🛒 Sizning Savatingiz</h2>
+
+      <div id="cartContainer" class="cart-container">
+        <div class="empty-cart">
+          <img src="https://cdn-icons-png.flaticon.com/512/11329/11329060.png" alt="Empty cart">
+          <p>Savat hozircha bo‘sh...</p>
+        </div>
+      </div>
+
+      <div class="cart-summary">
+        <h3>Jami summa: <span id="totalPrice">0 so‘m</span></h3>
+        <div class="buttons">
+          <button id="clearCart">🗑 Savatni tozalash</button>
+          <button id="orderNow">🛍 Buyurtma berish</button>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- 🧾 Modal oynasi -->
+  <div id="orderModal" class="modal">
+    <div class="modal-content">
+      <span class="close-btn">&times;</span>
+      <h2>🛍 Buyurtma berish</h2>
+      <form id="orderForm">
+        <input type="text" id="name" placeholder="Ismingiz" required>
+        <input type="tel" id="phone" placeholder="Telefon raqamingiz" required>
+        <textarea id="address" placeholder="Manzilingiz" required></textarea>
+        <button type="submit" class="submit-btn">Buyurtmani yuborish</button>
+      </form>
+    </div>
+  </div>
+
+  <footer>
+    <p>© 2025 Anjir Supermarket | Barcha huquqlar himoyalangan</p>
+  </footer>
+
+</body>
+</html>
