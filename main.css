@@ -370,4 +370,20 @@
   }
 }
 
-  
+  /* === Savat havolasi uslubi === */
+.cart-link {
+  background: linear-gradient(135deg, #2e8b57, #44c28b);
+  color: white !important;
+  padding: 8px 16px;
+  border-radius: 25px;
+  font-weight: 600;
+  transition: all 0.3s ease;
+  box-shadow: 0 3px 10px rgba(46, 139, 87, 0.4);
+}
+
+.cart-link:hover {
+  background: #ffb100;
+  color: white !important;
+  transform: scale(1.05);
+  box-shadow: 0 6px 18px rgba(255, 177, 0, 0.5);
+}
