@@ -149,3 +149,119 @@ footer {
   font-size: 0.95rem;
   letter-spacing: 0.5px;
 }
+
+
+/* ========================= */
+/* 📱 Qo‘shimcha moslashuvchan dizayn */
+/* ========================= */
+
+@media (max-width: 1024px) {
+  .navbar {
+    padding: 12px 30px;
+  }
+
+  .logo-text {
+    font-size: 1.3rem;
+  }
+
+  .hero h1 {
+    font-size: 2.2rem;
+  }
+
+  .hero p {
+    font-size: 1.1rem;
+  }
+
+  .team {
+    gap: 30px;
+    padding: 60px 8%;
+  }
+}
+
+@media (max-width: 768px) {
+  .navbar {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 12px;
+    padding: 15px 25px;
+  }
+
+  .nav-links {
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 15px;
+    width: 100%;
+  }
+
+  .hero {
+    padding: 90px 10% 60px;
+    border-bottom-left-radius: 35% 8%;
+    border-bottom-right-radius: 35% 8%;
+  }
+
+  .hero h1 {
+    font-size: 1.9rem;
+  }
+
+  .hero p {
+    font-size: 1rem;
+  }
+
+  .team {
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    padding: 60px 6%;
+    gap: 25px;
+  }
+
+  .member-card {
+    padding: 20px;
+  }
+
+  .member-card img {
+    width: 130px;
+    height: 130px;
+  }
+}
+
+@media (max-width: 480px) {
+  .logo-text {
+    font-size: 1.1rem;
+  }
+
+  .nav-links {
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .hero {
+    padding: 70px 8% 50px;
+  }
+
+  .hero h1 {
+    font-size: 1.5rem;
+  }
+
+  .hero p {
+    font-size: 0.9rem;
+  }
+
+  .member-card {
+    width: 90%;
+    margin: 0 auto;
+    padding: 18px;
+  }
+
+  .member-card h3 {
+    font-size: 1.2rem;
+  }
+
+  .member-card p {
+    font-size: 0.9rem;
+  }
+
+  footer {
+    font-size: 0.8rem;
+    padding: 15px;
+  }
+}
