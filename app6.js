@@ -1,15 +1,19 @@
-// Savatni localStorage dan olish
+// === Savatni localStorage dan olish ===
 let cart = JSON.parse(localStorage.getItem("cart")) || [];
 const cartContainer = document.getElementById("cartContainer");
 const totalPriceEl = document.getElementById("totalPrice");
 const clearCartBtn = document.getElementById("clearCart");
 
-// Mahsulotlarni chiqarish
+// === Mahsulotlarni chiqarish ===
 function displayCart() {
   cartContainer.innerHTML = "";
 
   if (cart.length === 0) {
-    cartContainer.innerHTML = `<p class="empty">Savat hozircha bo‘sh...</p>`;
+    cartContainer.innerHTML = `
+      <div class="empty-cart">
+        <img src="https://cdn-icons-png.flaticon.com/512/11329/11329060.png" alt="Empty cart">
+        <p>Savat hozircha bo‘sh...</p>
+      </div>`;
     totalPriceEl.textContent = "0 so‘m";
     return;
   }
@@ -26,14 +30,12 @@ function displayCart() {
     `;
     cartContainer.appendChild(card);
 
-    // Narxni hisoblash (raqam ajratib olish)
     const priceNumber = parseInt(item.price.replace(/[^\d]/g, ""));
     total += priceNumber;
   });
 
   totalPriceEl.textContent = `${total.toLocaleString()} so‘m`;
 
-  // O‘chirish tugmalari
   document.querySelectorAll(".remove-btn").forEach((btn) => {
     btn.addEventListener("click", (e) => {
       const idx = e.target.getAttribute("data-index");
@@ -44,7 +46,7 @@ function displayCart() {
   });
 }
 
-// Savatni tozalash
+// === Savatni tozalash ===
 clearCartBtn.addEventListener("click", () => {
   if (confirm("Savatni tozalashni xohlaysizmi?")) {
     cart = [];
@@ -54,7 +56,7 @@ clearCartBtn.addEventListener("click", () => {
 });
 
 displayCart();
-window.scrollTo({ top: 0, behavior: "smooth" });
+
 // === Buyurtma berish modal ===
 const orderBtn = document.getElementById("orderNow");
 const modal = document.getElementById("orderModal");
@@ -76,7 +78,7 @@ window.addEventListener("click", (e) => {
   if (e.target === modal) modal.style.display = "none";
 });
 
-// Buyurtma yuborish
+// === Buyurtma yuborish ===
 orderForm.addEventListener("submit", (e) => {
   e.preventDefault();
 
@@ -89,13 +91,39 @@ orderForm.addEventListener("submit", (e) => {
     return;
   }
 
-  // Hozircha faqat konsolga chiqaramiz
-  console.log("Buyurtma berildi:", { name, phone, address, cart });
-  alert("✅ Buyurtmangiz qabul qilindi! Tez orada siz bilan bog‘lanamiz.");
+  let orderText = `🛒 <b>Yangi buyurtma!</b>\n\n👤 <b>Ism:</b> ${name}\n📞 <b>Telefon:</b> ${phone}\n🏠 <b>Manzil:</b> ${address}\n\n<b>Mahsulotlar:</b>\n`;
 
-  // Tozalash
-  localStorage.removeItem("cart");
-  cart = [];
-  displayCart();
-  modal.style.display = "none";
+  let total = 0;
+  cart.forEach((item) => {
+    const priceNum = parseInt(item.price.replace(/[^\d]/g, ""));
+    total += priceNum;
+    orderText += `• ${item.name} — ${item.price}\n`;
+  });
+
+  orderText += `\n💰 <b>Jami:</b> ${total.toLocaleString()} so‘m`;
+
+  // === Telegramga yuborish ===
+  const TOKEN = "8119491112:AAEnp06vkAXdY-6kEnRXKbzIFJjZDufznYY";
+  const CHAT_ID = "6652899566";
+
+  fetch(`https://api.telegram.org/bot${TOKEN}/sendMessage`, {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({
+      chat_id: CHAT_ID,
+      text: orderText,
+      parse_mode: "HTML",
+    }),
+  })
+    .then(() => {
+      alert("✅ Buyurtmangiz yuborildi! Tez orada siz bilan bog‘lanamiz.");
+      localStorage.removeItem("cart");
+      cart = [];
+      displayCart();
+      modal.style.display = "none";
+      orderForm.reset();
+    })
+    .catch(() => {
+      alert("❌ Xatolik! Internet aloqasini tekshiring.");
+    });
 });
