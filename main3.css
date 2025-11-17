@@ -143,7 +143,7 @@ body {
 }
 .story-img {
   flex: 1 1 400px;
-  background: url("https://source.unsplash.com/800x600/?grocery,store") center/cover no-repeat;
+  background: url("img/Biz\ xaqimizda.jpg") center/cover no-repeat;
   height: 350px;
   border-radius: 25px;
   box-shadow: 0 10px 30px rgba(0,0,0,0.1);

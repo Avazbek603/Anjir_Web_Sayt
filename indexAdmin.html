@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Admin Panel | Anjir Supermarket</title>
+  <link rel="stylesheet" href="mainadmin.css" />
+  <script src="appadmin.js" defer></script>
+</head>
+
+<body>
+  <header>
+    <h1>🛠 Anjir Supermarket — Admin Panel</h1>
+  </header>
+
+  <main class="container">
+
+    <!-- ADD PRODUCT -->
+    <section class="card">
+      <h2>➕ Yangi mahsulot qo‘shish</h2>
+
+      <input type="text" id="name" placeholder="Mahsulot nomi">
+      <input type="text" id="price" placeholder="Narxi (12,000 so‘m)">
+      <input type="text" id="image" placeholder="Rasm URL manzili">
+
+      <select id="category">
+        <option value="">Kategoriyani tanlang</option>
+        <option value="Ichimliklar">Ichimliklar</option>
+        <option value="Mevalar">Mevalar</option>
+        <option value="Sabzavotlar">Sabzavotlar</option>
+        <option value="Go‘sht mahsulotlari">Go‘sht mahsulotlari</option>
+        <option value="Sut mahsulotlari">Sut mahsulotlari</option>
+        <option value="Shirinliklar">Shirinliklar</option>
+        <option value="Gazaklar">Gazaklar</option>
+        <option value="Uy-ro‘zg‘or va tozalovchi vositalar">Uy-ro‘zg‘or</option>
+        <option value="Kosmetika va gigiyena">Kosmetika</option>
+        <option value="Bolalar mahsulotlari">Bolalar</option>
+      </select>
+
+      <button id="addBtn" class="btn green">Qo‘shish</button>
+      <p id="statusMsg"></p>
+    </section>
+
+    <!-- EDIT MODAL -->
+    <div id="editModal" class="modal">
+      <div class="modal-content">
+        <h2>✏️ Mahsulotni tahrirlash</h2>
+
+        <input type="hidden" id="editId">
+        <input type="text" id="editName" placeholder="Mahsulot nomi">
+        <input type="text" id="editPrice" placeholder="Narxi">
+        <input type="text" id="editImage" placeholder="Rasm URL">
+
+        <select id="editCategory">
+          <option value="Ichimliklar">Ichimliklar</option>
+          <option value="Mevalar">Mevalar</option>
+          <option value="Sabzavotlar">Sabzavotlar</option>
+          <option value="Go‘sht mahsulotlari">Go‘sht mahsulotlari</option>
+          <option value="Sut mahsulotlari">Sut mahsulotlari</option>
+          <option value="Shirinliklar">Shirinliklar</option>
+          <option value="Gazaklar">Gazaklar</option>
+          <option value="Uy-ro‘zg‘or va tozalovchi vositalar">Uy-ro‘zg‘or</option>
+          <option value="Kosmetika va gigiyena">Kosmetika</option>
+          <option value="Bolalar mahsulotlari">Bolalar</option>
+        </select>
+
+        <button id="saveEditBtn" class="btn green">💾 Saqlash</button>
+        <button id="closeEditBtn" class="btn red">Bekor qilish</button>
+      </div>
+    </div>
+
+    <!-- PRODUCT LIST -->
+    <section class="card">
+      <h2>📋 Mavjud mahsulotlar</h2>
+      <div id="productContainer" class="grid"></div>
+    </section>
+
+  </main>
+</body>
+</html>

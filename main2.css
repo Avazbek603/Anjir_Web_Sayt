@@ -53,7 +53,7 @@ body {
   cursor: pointer;
 }
 
-/* Qidiruv */
+/* 🔍 Qidiruv paneli */
 .search-bar {
   text-align: center;
   background-color: #388e3c;
@@ -68,6 +68,45 @@ body {
   border-radius: 25px;
   outline: none;
   font-size: 16px;
+}
+
+/* 🔹 Kategoriya paneli */
+.category-bar {
+  display: flex;
+  overflow-x: auto;
+  white-space: nowrap;
+  gap: 10px;
+  padding: 12px 10px;
+  background: #fff;
+  border-bottom: 2px solid #e0e0e0;
+  scroll-behavior: smooth;
+}
+
+.category-bar::-webkit-scrollbar {
+  height: 6px;
+}
+
+.category-bar::-webkit-scrollbar-thumb {
+  background-color: #81c784;
+  border-radius: 10px;
+}
+
+.category-btn {
+  flex-shrink: 0;
+  background: #e8f5e9;
+  border: 1px solid #2e7d32;
+  color: #2e7d32;
+  border-radius: 25px;
+  padding: 8px 16px;
+  cursor: pointer;
+  font-weight: 500;
+  transition: 0.3s;
+}
+
+.category-btn:hover,
+.category-btn.active {
+  background: #2e7d32;
+  color: #fff;
 }
 
 /* Mahsulotlar qismi */
@@ -92,6 +131,7 @@ main {
   overflow: hidden;
   transition: 0.2s ease;
   text-align: center;
+  padding-bottom: 15px;
 }
 
 .product-card:hover {
@@ -119,6 +159,23 @@ main {
   font-size: 15px;
   color: #2e7d32;
   font-weight: 600;
+}
+
+.add-to-cart {
+  background-color: #2e7d32;
+  color: #fff;
+  border: none;
+  padding: 8px 12px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 14px;
+  margin-top: 10px;
+  transition: 0.3s;
+  width: 100%;
+}
+
+.add-to-cart:hover {
+  background-color: #256c45;
 }
 
 /* Footer */
@@ -165,44 +222,3 @@ footer {
     grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
   }
 }
-
-.product-card {
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  align-items: center;
-  padding: 15px;
-  background: #fff;
-  border-radius: 12px;
-  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
-  transition: transform 0.2s;
-}
-
-.product-card:hover {
-  transform: translateY(-4px);
-}
-
-.product-card img {
-  width: 120px;
-  height: 120px;
-  object-fit: contain;
-}
-
-.add-to-cart {
-  background-color: #2e8b57;
-  color: rgb(255, 255, 255);
-  border: none;
-  padding: 8px 12px;
-  border-radius: 8px;
-  cursor: pointer;
-  font-size: 14px;
-  margin-top: 10px;
-  transition: 0.3s;
-  width: 100%;
-}
-
-.add-to-cart:hover {
-  background-color: #256c45;
-}
-
-

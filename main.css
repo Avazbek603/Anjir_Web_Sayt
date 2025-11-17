@@ -81,16 +81,18 @@
   }
   
   /* Hero */
-  .hero {
-    background: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.6)),
-      url('images/store.jpg') center/cover no-repeat;
-    color: white;
-    text-align: center;
-    padding: 160px 20px;
-    position: relative;
-    border-radius: 0 0 80px 80px;
-    box-shadow: 0 8px 25px rgba(0,0,0,0.2);
-  }
+.hero {
+  background: 
+    linear-gradient(rgba(0, 0, 0, 0.55), rgba(0, 0, 0, 0.55)), 
+    url('img/photo_5235847227736002016_x.jpg') center/cover no-repeat;
+  color: white;
+  text-align: center;
+  padding: 160px 20px;
+  position: relative;
+  border-radius: 0 0 80px 80px;
+  box-shadow: 0 8px 25px rgba(0,0,0,0.2);
+}
+
   
   .hero-content h1 {
     font-size: 3.2rem;

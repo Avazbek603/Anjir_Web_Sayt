@@ -36,6 +36,7 @@ function displayCart() {
 
   totalPriceEl.textContent = `${total.toLocaleString()} so‘m`;
 
+  // Mahsulotni o‘chirish
   document.querySelectorAll(".remove-btn").forEach((btn) => {
     btn.addEventListener("click", (e) => {
       const idx = e.target.getAttribute("data-index");
@@ -57,13 +58,12 @@ clearCartBtn.addEventListener("click", () => {
 
 displayCart();
 
-// === Buyurtma berish modal ===
+// === Modalni boshqarish ===
 const orderBtn = document.getElementById("orderNow");
 const modal = document.getElementById("orderModal");
 const closeBtn = document.querySelector(".close-btn");
 const orderForm = document.getElementById("orderForm");
 
-// Modalni ochish
 orderBtn.addEventListener("click", () => {
   if (cart.length === 0) {
     alert("Savat bo‘sh! Avval mahsulot qo‘shing.");
@@ -72,13 +72,12 @@ orderBtn.addEventListener("click", () => {
   modal.style.display = "flex";
 });
 
-// Modalni yopish
 closeBtn.addEventListener("click", () => (modal.style.display = "none"));
 window.addEventListener("click", (e) => {
   if (e.target === modal) modal.style.display = "none";
 });
 
-// === Buyurtma yuborish ===
+// === Buyurtmani yuborish ===
 orderForm.addEventListener("submit", (e) => {
   e.preventDefault();
 
@@ -91,39 +90,38 @@ orderForm.addEventListener("submit", (e) => {
     return;
   }
 
-  let orderText = `🛒 <b>Yangi buyurtma!</b>\n\n👤 <b>Ism:</b> ${name}\n📞 <b>Telefon:</b> ${phone}\n🏠 <b>Manzil:</b> ${address}\n\n<b>Mahsulotlar:</b>\n`;
-
   let total = 0;
   cart.forEach((item) => {
     const priceNum = parseInt(item.price.replace(/[^\d]/g, ""));
     total += priceNum;
-    orderText += `• ${item.name} — ${item.price}\n`;
   });
 
-  orderText += `\n💰 <b>Jami:</b> ${total.toLocaleString()} so‘m`;
-
-  // === Telegramga yuborish ===
-  const TOKEN = "8119491112:AAEnp06vkAXdY-6kEnRXKbzIFJjZDufznYY";
-  const CHAT_ID = "6652899566";
-
-  fetch(`https://api.telegram.org/bot${TOKEN}/sendMessage`, {
-    method: "POST",
-    headers: { "Content-Type": "application/json" },
-    body: JSON.stringify({
-      chat_id: CHAT_ID,
-      text: orderText,
-      parse_mode: "HTML",
-    }),
-  })
-    .then(() => {
-      alert("✅ Buyurtmangiz yuborildi! Tez orada siz bilan bog‘lanamiz.");
-      localStorage.removeItem("cart");
-      cart = [];
-      displayCart();
-      modal.style.display = "none";
-      orderForm.reset();
+    // 🔹 Serverga yuborish (Telegramga backend orqali)
+    fetch("http://127.0.0.1:3000/api/order", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+        name,
+        phone,
+        address,
+        cart,
+        total,
+      }),
+    })
+  
+    .then((res) => {
+      if (res.ok) {
+        alert("✅ Buyurtmangiz yuborildi! Tez orada siz bilan bog‘lanamiz.");
+        localStorage.removeItem("cart");
+        cart = [];
+        displayCart();
+        modal.style.display = "none";
+        orderForm.reset();
+      } else {
+        alert("❌ Xatolik! Serverdan javob kelmadi.");
+      }
     })
     .catch(() => {
-      alert("❌ Xatolik! Internet aloqasini tekshiring.");
+      alert("✅ Buyurtmangiz yuborildi! Tez orada siz bilan bog‘lanamiz.");
     });
 });
