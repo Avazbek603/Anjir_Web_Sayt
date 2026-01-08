@@ -6,13 +6,18 @@ const fs = require("fs");
 const app = express();
 const PORT = process.env.PORT || 3000;
 
-// 🔐 Telegram
-const TOKEN = "8119491112:AAEnp06vkAXdY-6kEnRXKbzIFJjZDufznYY";
-const CHAT_ID = "6652899566";
+// 🔐 Telegram (ENV orqali — XAVFSIZ)
+const TOKEN = process.env.BOT_TOKEN;
+const CHAT_ID = process.env.CHAT_ID;
 
 // 🔧 Middleware
 app.use(cors());
 app.use(express.json());
+
+// 🟢 ASOSIY SAHIFA (Cannot GET / ni tuzatadi)
+app.get("/", (req, res) => {
+  res.send("🟢 Anjir Web Sayti ishlayapti!");
+});
 
 // 🗂 JSON fayllar
 if (!fs.existsSync("orders.json")) fs.writeFileSync("orders.json", "[]");
@@ -56,10 +61,14 @@ app.post("/api/order", async (req, res) => {
     await fetch(`https://api.telegram.org/bot${TOKEN}/sendMessage`, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ chat_id: CHAT_ID, text, parse_mode: "HTML" }),
+      body: JSON.stringify({
+        chat_id: CHAT_ID,
+        text,
+        parse_mode: "HTML"
+      }),
     });
     res.json({ success: true });
-  } catch {
+  } catch (e) {
     res.status(500).json({ error: "Telegram xatosi" });
   }
 });
@@ -107,6 +116,9 @@ app.post("/api/products/delete", (req, res) => {
 });
 
 // ======================================================
+// 🚀 SERVER
+// ======================================================
+
 app.listen(PORT, () => {
   console.log("🚀 Server ishlayapti:", PORT);
 });
