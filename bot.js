@@ -7,8 +7,8 @@ const app = express();
 const PORT = process.env.PORT || 3000;
 
 // 🔐 Telegram (ENV orqali — XAVFSIZ)
-const TOKEN = process.env.BOT_TOKEN;
-const CHAT_ID = process.env.CHAT_ID;
+const TOKEN = "8119491112:AAEnp06vkAXdY-6kEnRXKbzIFJjZDufznYY";
+const CHAT_ID = 6652899566;
 
 // 🔧 Middleware
 app.use(cors());
